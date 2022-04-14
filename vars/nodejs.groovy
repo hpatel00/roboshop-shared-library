@@ -7,9 +7,9 @@ def lintChecks()
     '''
 }
 
-def sonarCheck(){
+def sonarCheck() {
     sh '''
-        sonar-scanner -Dsonar.host.url=http://172.31.9.186:9000 -Dsonar.sources=. -Dsonar.projectKey=${COMPONENT}
+       sonar-scanner -Dsonar.host.url=http://172.31.9.186:9000 -Dsonar.sources=. -Dsonar.projectKey=${COMPONENT}
     '''
 }
 
@@ -31,7 +31,7 @@ def call() {
             stage('SonarCheck') {
                 steps{
                     script{
-                        lintChecks()
+                        sonarCheck()
                     }
                 }
             }
