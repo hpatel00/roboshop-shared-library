@@ -22,6 +22,14 @@ def call() {
                     }
                 }
             }
+
+            stage('SonarCheck') {
+                steps{
+                    script{
+                        common.sonarCheck()
+                    }
+                }
+            }
         } // end of stages
     }
 
