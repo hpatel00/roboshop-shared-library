@@ -7,6 +7,12 @@ def lintChecks()
     '''
 }
 
+def sonarCheck(){
+    sh '''
+        sonar-scanner -Dsonar.host.url=http://172.31.9.186:9000 -Dsonar.sources=. -Dsonar.projectKey=${COMPONENT}
+    '''
+}
+
 def call() {
     pipeline {
         agent any
@@ -15,6 +21,14 @@ def call() {
 
             // For each commit
             stage('Lint Check') {
+                steps{
+                    script{
+                        lintChecks()
+                    }
+                }
+            }
+
+            stage('SonarCheck') {
                 steps{
                     script{
                         lintChecks()
