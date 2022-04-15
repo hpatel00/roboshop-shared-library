@@ -48,18 +48,18 @@ def testCases() {
 
     def stages = [:]
 
-        stage['Unit Tests']{
-            sh 'echo Unit Tests'
-        }
+    stage['Unit Tests'] = {
+        sh 'echo Unit Tests'
+    }
 
-        stage['Integration Tests']{
-            sh 'echo Integration Tests'
-        }
+    stage['Integration Tests'] = {
+        sh 'echo Integration Tests'
+    }
 
-        stage['Functional Tests']{
-            sh 'echo Functional Tests'
-        }
+    stage['Functional Tests'] = {
+        sh 'echo Functional Tests'
+    }
 
-        parallel(stages)
+    parallel(stages)
     }
 }
