@@ -45,15 +45,15 @@ def call() {
                         }
                     }
 
-                    stage('Functional Tests'){
+                    stage('Integration Tests'){
                         steps{
-                            sh 'echo Functional Tests'
+                            sh 'echo Integration Tests'
                         }
                     }
 
-                    stage('Unit Tests'){
+                    stage('Functional Tests'){
                         steps{
-                            sh 'echo Unit Tests'
+                            sh 'echo Functional Tests'
                         }
                     }
                 }
