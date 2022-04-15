@@ -1,12 +1,10 @@
 def call() {
     node{
-        stage('Lint Check') {
-            env.APP_TYPE="nodejs"
-            common.lintChecks()
-            env.ARGS="-Dsonar.sources=."
-            common.sonarCheck()
-            common.testCases()
-        }
+        env.APP_TYPE="nodejs"
+        common.lintChecks()
+        env.ARGS="-Dsonar.sources=."
+        common.sonarCheck()
+        common.testCases()
     }
 }
 
