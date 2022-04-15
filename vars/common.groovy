@@ -87,8 +87,7 @@ def artifacts() {
             }
             else if (env.APP_TYPE=="python") {
                 sh '''
-                    cd /home/roboshop/payment 
-                    pip3 install -r requirements.txt
+                    zip -r ${COMPONENT}-${TAG_NAME}.zip *.py *.ini requirements.txt
                 '''
             }
             else if (env.APP_TYPE=="golang") {
@@ -96,6 +95,7 @@ def artifacts() {
                     go mod init dispatch
                     go get 
                     go build
+                    zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js
                 '''
             }
         }
