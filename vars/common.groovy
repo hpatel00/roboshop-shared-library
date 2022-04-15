@@ -1,13 +1,13 @@
 def lintChecks() {
     stage{
-        if (env.APP_TYPE="nodejs") {
+        if (env.APP_TYPE=="nodejs") {
             sh '''
                # We commented this out bc there are errors that the developers would need to fix
                #~/node_modules/jslint/bin/jslint.js server.js
                echo Lint Check for ${COMPONENT}
             '''
         }
-        else if (env.APP_TYPE="maven") {
+        else if (env.APP_TYPE=="maven") {
             sh '''
                # We commented this out bc there are errors that the developers would need to fix
                #~/node_modules/jslint/bin/jslint.js server.js
@@ -15,7 +15,7 @@ def lintChecks() {
                echo Lint Check for ${COMPONENT}
             '''
         }
-        else if (env.APP_TYPE="python") {
+        else if (env.APP_TYPE=="python") {
             sh '''
                # We commented this out bc there are errors that the developers would need to fix
                #~/node_modules/jslint/bin/jslint.js server.js
@@ -23,7 +23,7 @@ def lintChecks() {
                echo Lint Check for ${COMPONENT}
             '''
         }
-        else if (env.APP_TYPE="golang") {
+        else if (env.APP_TYPE=="golang") {
             sh '''
                # We commented this out bc there are errors that the developers would need to fix
                #~/node_modules/jslint/bin/jslint.js server.js
