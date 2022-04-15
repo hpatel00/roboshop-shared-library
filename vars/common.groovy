@@ -76,7 +76,6 @@ def artifacts() {
                 sh '''
                     npm install
                     zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js
-                    curl -v -f -u ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONENT}-${TAG_NAME}.zip http://172.31.11.185:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip
                 '''
             }
             else if (env.APP_TYPE=="maven") {
