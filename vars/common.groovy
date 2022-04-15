@@ -1,5 +1,5 @@
 def lintChecks() {
-    stage{
+    stage('Lint Checks'){
         if (env.APP_TYPE=="nodejs") {
             sh '''
                # We commented this out bc there are errors that the developers would need to fix
@@ -34,11 +34,13 @@ def lintChecks() {
 }
 
 def sonarCheck() {
-    sh '''
-       #sonar-scanner -Dsonar.host.url=http://172.31.9.186:9000 -Dsonar.projectKey=${COMPONENT} -Dsonar.login=${SONAR_USR} -Dsonar.password=${SONAR_PSW} ${ARGS}
-       #sonar-quality-gate.sh ${SONAR_USR} ${SONAR_PSW} 172.31.9.186 ${COMPONENT}
-       echo Sonar Checks for ${COMPONENT}
-    '''
+    stage('Sonar Code Analysis') {
+        sh '''
+           #sonar-scanner -Dsonar.host.url=http://172.31.9.186:9000 -Dsonar.projectKey=${COMPONENT} -Dsonar.login=${SONAR_USR} -Dsonar.password=${SONAR_PSW} ${ARGS}
+           #sonar-quality-gate.sh ${SONAR_USR} ${SONAR_PSW} 172.31.9.186 ${COMPONENT}
+           echo Sonar Checks for ${COMPONENT}
+        '''
+    }
 }
 
 def testCases() {
