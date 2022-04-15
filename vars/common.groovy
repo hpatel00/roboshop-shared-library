@@ -92,10 +92,10 @@ def artifacts() {
             }
             else if (env.APP_TYPE=="golang") {
                 sh '''
-                    go mod init dispatch
-                    go get 
+                    go mod init ${COMPONENT}
+                    go get
                     go build
-                    zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js
+                    zip -r ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}
                 '''
             }
         }
