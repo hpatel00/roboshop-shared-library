@@ -80,18 +80,23 @@ def artifacts() {
             }
             else if (env.APP_TYPE=="maven") {
                 sh """
-                    echo
+                    mvn clean package 
+                    mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
+                    zip -r ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}.jar
                 """
             }
             else if (env.APP_TYPE=="python") {
-                sh """
-                    echo
-                """
+                sh '''
+                    cd /home/roboshop/payment 
+                    pip3 install -r requirements.txt
+                '''
             }
             else if (env.APP_TYPE=="golang") {
-                sh """
-                    echo
-                """
+                sh '''
+                    go mod init dispatch
+                    go get 
+                    go build
+                '''
             }
         }
 
