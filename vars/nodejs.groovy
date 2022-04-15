@@ -66,7 +66,7 @@ def call() {
                 }
                 steps{
                     script{
-                        def UPLOAD_STATUS=sh(returnStdout: true, script: "curl -s -L http://172.31.11.185:8081/service/rest/repository/browse/${COMPONENT} | grep ${COMPONENT}-${TAG_NAME}.zip")
+                        env.UPLOAD_STATUS=sh(returnStdout: true, script: "curl -s -L http://172.31.11.185:8081/service/rest/repository/browse/${COMPONENT} | grep ${COMPONENT}-${TAG_NAME}.zip")
                         print UPLOAD_STATUS
                     }
                 }
@@ -75,6 +75,7 @@ def call() {
             stage('Prepare Artifacts') {
                 when{
                     expression { env.TAG_NAME != null }
+                    expression {env.UPLOAD_STATUS == ""}
                 }
                 steps{
                     sh '''
