@@ -46,25 +46,20 @@ def sonarCheck() {
 def testCases() {
     stage('Test Cases'){
 
-        parallel{
+    def stages = [:]
 
-            stage('Unit Tests'){
-                steps{
-                    sh 'echo Unit Tests'
-                }
-            }
-
-            stage('Integration Tests'){
-                steps{
-                    sh 'echo Integration Tests'
-                }
-            }
-
-            stage('Functional Tests'){
-                steps{
-                    sh 'echo Functional Tests'
-                }
-            }
+        stage('Unit Tests'){
+            sh 'echo Unit Tests'
         }
+
+        stage('Integration Tests'){
+            sh 'echo Integration Tests'
+        }
+
+        stage('Functional Tests'){
+            sh 'echo Functional Tests'
+        }
+
+        parallel(stages)
     }
 }
