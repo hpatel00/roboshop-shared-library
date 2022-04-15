@@ -1,7 +1,7 @@
-env.APP_TYPE="nodejs"
 def call() {
     node{
         stage('Lint Check') {
+            env.APP_TYPE="nodejs"
             common.lintChecks()
             env.ARGS="-Dsonar.sources=."
             common.sonarCheck()
